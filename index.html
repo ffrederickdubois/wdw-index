@@ -8,482 +8,140 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap');
 
   :root {
-    --magic-blue: #0057A8;
-    --cinderella-gold: #C9A84C;
-    --castle-white: #F8F6F1;
-    --night-navy: #0A1628;
-    --mist-grey: #E8E4DC;
-    --text-dark: #1A1A2E;
-    --text-mid: #4A4A6A;
-    --text-light: #8A8AAA;
-    --hotel-teal: #006B6B;
-    --restaurant-crimson: #8B1A1A;
-    --attraction-purple: #4A1A6B;
-    --general-slate: #3A4A5A;
-    --shadow: 0 2px 12px rgba(10,22,40,0.10);
-    --shadow-lg: 0 8px 32px rgba(10,22,40,0.18);
+    --magic-blue:       #0057A8;
+    --cinderella-gold:  #C9A84C;
+    --castle-white:     #F8F6F1;
+    --night-navy:       #0A1628;
+    --mist-grey:        #E8E4DC;
+    --text-dark:        #1A1A2E;
+    --text-mid:         #4A4A6A;
+    --text-light:       #8A8AAA;
+
+    /* category accent colours */
+    --col-hotel:       #006B6B;
+    --col-restaurant:  #C0392B;
+    --col-attraction:  #6A3BA8;
+    --col-cruise:      #1A6FA8;
+    --col-general:     #3A4A5A;
+
+    --shadow:    0 2px 12px rgba(10,22,40,.10);
+    --shadow-lg: 0 8px 32px rgba(10,22,40,.18);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--castle-white); color: var(--text-dark); font-family: 'Inter', sans-serif; min-height: 100vh; }
 
-  body {
-    background: var(--castle-white);
-    color: var(--text-dark);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-  }
-
-  /* HEADER */
-  .site-header {
-    background: var(--night-navy);
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .logo-block { flex: 0 0 auto; }
-  .logo-eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--cinderella-gold);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-  .logo-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1;
-    letter-spacing: -0.5px;
-  }
+  /* ── HEADER ── */
+  .site-header { background: var(--night-navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,.4); }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .logo-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: .25em; color: var(--cinderella-gold); text-transform: uppercase; margin-bottom: 2px; }
+  .logo-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: #fff; line-height: 1; }
   .logo-title span { color: var(--cinderella-gold); }
-
-  .header-search {
-    flex: 1 1 260px;
-    position: relative;
-  }
-  .header-search input {
-    width: 100%;
-    padding: 10px 16px 10px 40px;
-    border-radius: 8px;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .header-search input::placeholder { color: rgba(255,255,255,0.4); }
-  .header-search input:focus {
-    border-color: var(--cinderella-gold);
-    background: rgba(255,255,255,0.13);
-  }
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255,255,255,0.4);
-    pointer-events: none;
-    font-size: 15px;
-  }
-
-  .header-stats {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    font-family: 'Courier Prime', monospace;
-    letter-spacing: 0.05em;
-    flex: 0 0 auto;
-  }
+  .header-search { flex: 1 1 260px; position: relative; }
+  .header-search input { width: 100%; padding: 10px 16px 10px 40px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.15); background: rgba(255,255,255,.08); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color .2s, background .2s; }
+  .header-search input::placeholder { color: rgba(255,255,255,.4); }
+  .header-search input:focus { border-color: var(--cinderella-gold); background: rgba(255,255,255,.13); }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,.4); pointer-events: none; font-size: 15px; }
+  .header-stats { font-size: 11px; color: rgba(255,255,255,.45); font-family: 'Courier Prime', monospace; letter-spacing: .05em; flex: 0 0 auto; }
   .header-stats strong { color: var(--cinderella-gold); font-size: 14px; }
 
-  /* TOOLBAR */
-  .toolbar {
-    background: var(--mist-grey);
-    border-bottom: 1px solid #D8D4CC;
-    padding: 12px 32px;
-  }
-  .toolbar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .filter-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-right: 4px;
-  }
-  .filter-btn {
-    padding: 5px 14px;
-    border-radius: 20px;
-    border: 1.5px solid transparent;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    background: #fff;
-    color: var(--text-mid);
-    border-color: #D0CBBE;
-  }
+  /* ── TOOLBAR ── */
+  .toolbar { background: var(--mist-grey); border-bottom: 1px solid #D8D4CC; }
+  .toolbar-inner { max-width: 1200px; margin: 0 auto; padding: 10px 32px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .filter-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .1em; margin-right: 4px; white-space: nowrap; }
+  .filter-btn { padding: 5px 13px; border-radius: 20px; border: 1.5px solid #D0CBBE; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; transition: all .18s; background: #fff; color: var(--text-mid); white-space: nowrap; }
   .filter-btn:hover { border-color: var(--magic-blue); color: var(--magic-blue); }
   .filter-btn.active { background: var(--magic-blue); color: #fff; border-color: var(--magic-blue); }
-  .filter-btn.cat-hotel.active { background: var(--hotel-teal); border-color: var(--hotel-teal); }
-  .filter-btn.cat-restaurant.active { background: var(--restaurant-crimson); border-color: var(--restaurant-crimson); }
-  .filter-btn.cat-attraction.active { background: var(--attraction-purple); border-color: var(--attraction-purple); }
+  .filter-btn[data-cat="Hôtel"].active         { background: var(--col-hotel);      border-color: var(--col-hotel); }
+  .filter-btn[data-cat="Restaurant/Bar"].active{ background: var(--col-restaurant);  border-color: var(--col-restaurant); }
+  .filter-btn[data-cat="Attraction"].active    { background: var(--col-attraction);  border-color: var(--col-attraction); }
+  .filter-btn[data-cat="Croisière"].active     { background: var(--col-cruise);      border-color: var(--col-cruise); }
+  .filter-btn[data-cat="Général"].active       { background: var(--col-general);     border-color: var(--col-general); }
+  .toolbar-sep { width: 1px; height: 22px; background: #C8C4BC; margin: 0 2px; flex-shrink: 0; }
 
-  .toolbar-sep { width: 1px; height: 22px; background: #C8C4BC; margin: 0 4px; }
+  /* sub-location filter row */
+  .subloc-bar { max-width: 1200px; margin: 0 auto; padding: 6px 32px 10px; display: none; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .subloc-bar.visible { display: flex; }
+  .subloc-label { font-size: 10px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .1em; margin-right: 2px; }
+  .subloc-btn { padding: 3px 11px; border-radius: 14px; border: 1.5px solid #D0CBBE; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; background: #fff; color: var(--text-mid); transition: all .15s; }
+  .subloc-btn:hover { border-color: var(--text-mid); }
+  .subloc-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
-  .add-btn {
-    margin-left: auto;
-    padding: 8px 18px;
-    background: var(--cinderella-gold);
-    color: var(--night-navy);
-    border: none;
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.18s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .add-btn { margin-left: auto; padding: 8px 16px; background: var(--cinderella-gold); color: var(--night-navy); border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .18s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .add-btn:hover { background: #B8943C; transform: translateY(-1px); box-shadow: var(--shadow); }
 
-  /* MAIN */
-  .main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 32px 32px 64px;
-  }
-
-  /* RESULTS HEADER */
-  .results-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .results-count {
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: var(--text-light);
-    letter-spacing: 0.05em;
-  }
+  /* ── MAIN ── */
+  .main { max-width: 1200px; margin: 0 auto; padding: 28px 32px 64px; }
+  .results-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
+  .results-count { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--text-light); letter-spacing: .05em; }
   .results-count strong { color: var(--text-dark); font-size: 14px; }
+  .sort-select { padding: 5px 12px; border: 1.5px solid #D0CBBE; border-radius: 6px; font-size: 12px; font-family: 'Inter', sans-serif; background: #fff; color: var(--text-mid); cursor: pointer; outline: none; }
 
-  .sort-select {
-    padding: 5px 12px;
-    border: 1.5px solid #D0CBBE;
-    border-radius: 6px;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
-    background: #fff;
-    color: var(--text-mid);
-    cursor: pointer;
-    outline: none;
-  }
+  /* ── ISSUE GROUPS ── */
+  .issue-group { margin-bottom: 38px; }
+  .issue-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--night-navy); }
+  .issue-flag { background: var(--night-navy); color: #fff; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; padding: 4px 14px; border-radius: 4px; }
+  .issue-count-badge { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--text-light); }
 
-  /* ISSUE GROUPS */
-  .issue-group { margin-bottom: 40px; }
-  .issue-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--night-navy);
-  }
-  .issue-flag {
-    background: var(--night-navy);
-    color: #fff;
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
-  }
-  .issue-count-badge {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 0.05em;
-  }
-
-  /* ARTICLE CARDS */
-  .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-  }
-  .article-card {
-    background: #fff;
-    border-radius: 10px;
-    padding: 16px 18px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--general-slate);
-    transition: box-shadow 0.18s, transform 0.18s;
-    position: relative;
-    cursor: default;
-  }
+  /* ── CARDS ── */
+  .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .article-card { background: #fff; border-radius: 10px; padding: 16px 18px 14px; box-shadow: var(--shadow); border-left: 4px solid var(--col-general); transition: box-shadow .18s, transform .18s; position: relative; }
   .article-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-  .article-card.cat-Hôtel { border-left-color: var(--hotel-teal); }
-  .article-card.cat-Restaurant\/Bar { border-left-color: var(--restaurant-crimson); }
-  .article-card.cat-Attraction { border-left-color: var(--attraction-purple); }
 
-  .card-cat {
-    display: inline-block;
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 3px;
-    margin-bottom: 8px;
-    background: var(--mist-grey);
-    color: var(--general-slate);
-  }
-  .cat-Hôtel .card-cat { background: rgba(0,107,107,0.1); color: var(--hotel-teal); }
-  .cat-Restaurant\/Bar .card-cat { background: rgba(139,26,26,0.1); color: var(--restaurant-crimson); }
-  .cat-Attraction .card-cat { background: rgba(74,26,107,0.1); color: var(--attraction-purple); }
+  /* category border colours */
+  .article-card.cat-Hôtel          { border-left-color: var(--col-hotel); }
+  .article-card.cat-Restaurant-Bar    { border-left-color: var(--col-restaurant); }
+  .article-card.cat-Attraction        { border-left-color: var(--col-attraction); }
+  .article-card.cat-Croisière         { border-left-color: var(--col-cruise); }
 
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.35;
-    margin-bottom: 6px;
-  }
-  .card-title mark {
-    background: rgba(201,168,76,0.35);
-    border-radius: 2px;
-    padding: 0 2px;
-  }
+  /* category badge */
+  .card-badge-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .card-cat { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; background: var(--mist-grey); color: var(--col-general); }
+  .cat-Hôtel         .card-cat { background: rgba(0,107,107,.1);   color: var(--col-hotel); }
+  .cat-Restaurant-Bar   .card-cat { background: rgba(192,57,43,.1);   color: var(--col-restaurant); }
+  .cat-Attraction       .card-cat { background: rgba(106,59,168,.1);  color: var(--col-attraction); }
+  .cat-Croisière        .card-cat { background: rgba(26,111,168,.1);  color: var(--col-cruise); }
 
-  .card-meta {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    color: var(--text-light);
-    letter-spacing: 0.05em;
-  }
+  /* sub-location pill */
+  .card-subloc { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 9px; font-weight: 700; letter-spacing: .12em; padding: 2px 8px; border-radius: 3px; background: var(--night-navy); color: rgba(255,255,255,.85); }
 
-  .card-page {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    color: var(--text-light);
-    letter-spacing: 0.05em;
-  }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.35; margin-bottom: 6px; }
+  .card-title mark { background: rgba(201,168,76,.35); border-radius: 2px; padding: 0 2px; }
+  .card-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--text-light); }
+  .card-page { position: absolute; top: 12px; right: 14px; font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--text-light); }
 
-  /* EMPTY STATE */
-  .empty-state {
-    text-align: center;
-    padding: 80px 32px;
-    color: var(--text-light);
-  }
-  .empty-icon { font-size: 56px; margin-bottom: 16px; opacity: 0.5; }
-  .empty-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--text-mid);
-    margin-bottom: 8px;
-  }
+  /* ── EMPTY ── */
+  .empty-state { text-align: center; padding: 80px 32px; color: var(--text-light); }
+  .empty-icon { font-size: 56px; margin-bottom: 16px; opacity: .5; }
+  .empty-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-mid); margin-bottom: 8px; }
   .empty-sub { font-size: 14px; line-height: 1.6; max-width: 400px; margin: 0 auto 24px; }
 
-  /* MODAL */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,22,40,0.72);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
+  /* ── MODAL ── */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,22,40,.72); z-index: 999; align-items: center; justify-content: center; padding: 24px; }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: #fff;
-    border-radius: 16px;
-    padding: 36px;
-    max-width: 560px;
-    width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    position: relative;
-  }
-  .modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--night-navy);
-    margin-bottom: 8px;
-  }
-  .modal-sub { font-size: 13px; color: var(--text-mid); margin-bottom: 24px; line-height: 1.5; }
-
-  .upload-zone {
-    border: 2.5px dashed #C0BBAF;
-    border-radius: 12px;
-    padding: 36px 24px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--castle-white);
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .upload-zone:hover, .upload-zone.dragover {
-    border-color: var(--magic-blue);
-    background: rgba(0,87,168,0.04);
-  }
-  .upload-zone input[type=file] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-  }
-  .upload-icon { font-size: 40px; margin-bottom: 10px; }
-  .upload-text { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
-  .upload-text strong { color: var(--magic-blue); }
-
-  .preview-img {
-    width: 100%;
-    max-height: 240px;
-    object-fit: contain;
-    border-radius: 8px;
-    border: 1.5px solid #E0DBCF;
-    margin-bottom: 16px;
-    display: none;
-  }
-
-  .modal-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-  .btn-cancel {
-    padding: 10px 20px;
-    border: 1.5px solid #D0CBBE;
-    border-radius: 8px;
-    background: #fff;
-    color: var(--text-mid);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-cancel:hover { background: var(--mist-grey); }
-  .btn-analyze {
-    padding: 10px 22px;
-    border: none;
-    border-radius: 8px;
-    background: var(--magic-blue);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.18s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .btn-analyze:hover:not(:disabled) { background: #004890; }
-  .btn-analyze:disabled { opacity: 0.55; cursor: not-allowed; }
-
-  .status-msg {
-    font-size: 12px;
-    color: var(--text-mid);
-    text-align: center;
-    margin-bottom: 12px;
-    min-height: 18px;
-    font-style: italic;
-  }
-
-  .close-modal {
-    position: absolute;
-    top: 16px;
-    right: 18px;
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: var(--text-light);
-    cursor: pointer;
-    line-height: 1;
-    padding: 4px;
-  }
+  .modal { background: #fff; border-radius: 16px; padding: 36px; max-width: 620px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,.35); position: relative; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--night-navy); margin-bottom: 8px; }
+  .close-modal { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 22px; color: var(--text-light); cursor: pointer; }
   .close-modal:hover { color: var(--text-dark); }
+  .status-msg { font-size: 12px; color: var(--text-mid); text-align: center; margin-bottom: 12px; min-height: 18px; font-style: italic; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .btn-cancel { padding: 10px 20px; border: 1.5px solid #D0CBBE; border-radius: 8px; background: #fff; color: var(--text-mid); font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer; }
+  .btn-cancel:hover { background: var(--mist-grey); }
+  .btn-primary { padding: 10px 22px; border: none; border-radius: 8px; background: var(--magic-blue); color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn-primary:hover:not(:disabled) { background: #004890; }
+  .btn-primary:disabled { opacity: .55; cursor: not-allowed; }
 
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    background: var(--night-navy);
-    color: #fff;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 500;
-    box-shadow: var(--shadow-lg);
-    z-index: 9999;
-    transform: translateY(80px);
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    max-width: 340px;
-  }
+  /* ── TOAST ── */
+  .toast { position: fixed; bottom: 28px; right: 28px; background: var(--night-navy); color: #fff; padding: 14px 22px; border-radius: 10px; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); z-index: 9999; transform: translateY(80px); opacity: 0; transition: all .3s cubic-bezier(.34,1.56,.64,1); max-width: 340px; }
   .toast.show { transform: translateY(0); opacity: 1; }
   .toast.success { border-left: 4px solid #4CAF50; }
-  .toast.error { border-left: 4px solid #E53935; }
+  .toast.error   { border-left: 4px solid #E53935; }
 
-  /* SPINNER */
-  .spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: none;
-  }
-  .spinner.visible { display: block; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* HIGHLIGHT */
-  mark { background: rgba(201,168,76,0.4); border-radius: 2px; padding: 0 2px; font-style: normal; }
+  mark { background: rgba(201,168,76,.4); border-radius: 2px; padding: 0 2px; font-style: normal; }
 
   @media (max-width: 640px) {
     .header-inner { padding: 14px 16px; gap: 12px; }
-    .toolbar { padding: 10px 16px; }
+    .toolbar-inner, .subloc-bar { padding-left: 16px; padding-right: 16px; }
     .main { padding: 20px 16px 48px; }
     .articles-grid { grid-template-columns: 1fr; }
     .modal { padding: 24px 20px; }
@@ -511,15 +169,17 @@
 <div class="toolbar">
   <div class="toolbar-inner">
     <span class="filter-label">Catégorie</span>
-    <button class="filter-btn active" data-cat="all" onclick="setFilter('all')">Tous</button>
-    <button class="filter-btn cat-hotel" data-cat="Hôtel" onclick="setFilter('Hôtel')">🏨 Hôtels</button>
-    <button class="filter-btn cat-restaurant" data-cat="Restaurant/Bar" onclick="setFilter('Restaurant/Bar')">🍽️ Restaurants & Bars</button>
-    <button class="filter-btn cat-attraction" data-cat="Attraction" onclick="setFilter('Attraction')">🎢 Attractions</button>
-    <button class="filter-btn" data-cat="Général" onclick="setFilter('Général')">📄 Général</button>
+    <button class="filter-btn active" data-cat="all"          onclick="setFilter('all')">Tous</button>
+    <button class="filter-btn" data-cat="Hôtel"              onclick="setFilter('Hôtel')">🏨 Hôtels</button>
+    <button class="filter-btn" data-cat="Restaurant/Bar"     onclick="setFilter('Restaurant/Bar')">🍽️ Restaurants & Bars</button>
+    <button class="filter-btn" data-cat="Attraction"         onclick="setFilter('Attraction')">🎢 Attractions</button>
+    <button class="filter-btn" data-cat="Croisière"          onclick="setFilter('Croisière')">🚢 Croisières</button>
+    <button class="filter-btn" data-cat="Général"            onclick="setFilter('Général')">📄 Général</button>
     <div class="toolbar-sep"></div>
-    <button class="add-btn" onclick="openModal()">
-      <span>+</span> Ajouter un numéro
-    </button>
+    <button class="add-btn" onclick="openModal()"><span>+</span> Ajouter un numéro</button>
+  </div>
+  <div class="subloc-bar" id="sublocBar">
+    <span class="subloc-label">Parc / lieu</span>
   </div>
 </div>
 
@@ -536,38 +196,35 @@
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" style="max-width:620px">
+  <div class="modal">
     <button class="close-modal" onclick="closeModal()">×</button>
     <div class="modal-title">Ajouter un numéro</div>
 
-    <!-- ÉTAPES -->
     <div style="display:flex;gap:0;margin-bottom:22px;border-radius:10px;overflow:hidden;border:1.5px solid #E0DBCF;">
       <div style="flex:1;padding:14px 16px;background:#F8F6F1;border-right:1.5px solid #E0DBCF;">
-        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#C9A84C;font-weight:700;letter-spacing:0.15em;margin-bottom:4px;">ÉTAPE 1</div>
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#C9A84C;font-weight:700;letter-spacing:.15em;margin-bottom:4px;">ÉTAPE 1</div>
         <div style="font-size:13px;font-weight:600;color:#0A1628;margin-bottom:3px;">Photo → Claude.ai</div>
         <div style="font-size:11px;color:#6A6A8A;line-height:1.5;">Uploade ta photo de table des matières <strong>dans le chat Claude</strong> et demande l'analyse.</div>
       </div>
       <div style="flex:1;padding:14px 16px;background:#F8F6F1;">
-        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#C9A84C;font-weight:700;letter-spacing:0.15em;margin-bottom:4px;">ÉTAPE 2</div>
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#C9A84C;font-weight:700;letter-spacing:.15em;margin-bottom:4px;">ÉTAPE 2</div>
         <div style="font-size:13px;font-weight:600;color:#0A1628;margin-bottom:3px;">Coller le JSON ici</div>
         <div style="font-size:11px;color:#6A6A8A;line-height:1.5;">Copie le bloc JSON retourné par Claude et colle-le dans le champ ci-dessous.</div>
       </div>
     </div>
 
-    <!-- PROMPT À COPIER -->
     <div style="margin-bottom:16px;">
-      <div style="font-size:11px;font-weight:600;color:#8A8AAA;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Message à envoyer à Claude avec ta photo :</div>
+      <div style="font-size:11px;font-weight:600;color:#8A8AAA;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Message à envoyer à Claude avec ta photo :</div>
       <div style="position:relative;">
         <div id="promptBox" style="background:#0A1628;color:#C9A84C;font-family:'Courier Prime',monospace;font-size:12px;padding:12px 14px;border-radius:8px;line-height:1.6;white-space:pre-wrap;">Voici la table des matières d'un numéro de WDW Magazine. Analyse l'image et retourne un JSON avec ce format exact (sans texte avant ou après) :
-{"issue":"Mois AAAA","articles":[{"title":"Titre","category":"Hôtel|Restaurant/Bar|Attraction|Général","page":"XX"}]}</div>
-        <button onclick="copyPrompt()" style="position:absolute;top:8px;right:8px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:#C9A84C;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;">Copier</button>
+{"issue":"Mois AAAA","articles":[{"title":"Titre","category":"Hôtel|Restaurant/Bar|Attraction|Croisière|Général","page":"XX","sublocation":"MK|EPCOT|HS|AK|Water Parks|Disney Springs|Resorts|null"}]}</div>
+        <button onclick="copyPrompt()" style="position:absolute;top:8px;right:8px;background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4);color:#C9A84C;font-size:11px;padding:3px 10px;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;">Copier</button>
       </div>
     </div>
 
-    <!-- JSON INPUT -->
     <div style="margin-bottom:16px;">
-      <div style="font-size:11px;font-weight:600;color:#8A8AAA;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">JSON retourné par Claude :</div>
-      <textarea id="jsonInput" placeholder='{"issue":"Janvier 2024","articles":[{"title":"...","category":"...","page":"..."}]}'
+      <div style="font-size:11px;font-weight:600;color:#8A8AAA;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">JSON retourné par Claude :</div>
+      <textarea id="jsonInput" placeholder='{"issue":"Août 2023","articles":[{"title":"...","category":"...","page":"...","sublocation":"..."}]}'
         style="width:100%;height:130px;padding:12px 14px;border:1.5px solid #D0CBBE;border-radius:8px;font-family:'Courier Prime',monospace;font-size:12px;line-height:1.5;resize:vertical;outline:none;color:#1A1A2E;background:#fff;"
         oninput="validateJson(this)"></textarea>
     </div>
@@ -575,9 +232,7 @@
     <div class="status-msg" id="statusMsg"></div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Annuler</button>
-      <button class="btn-analyze" id="analyzeBtn" onclick="importJson()" disabled>
-        <span id="analyzeBtnText">Importer</span>
-      </button>
+      <button class="btn-primary" id="analyzeBtn" onclick="importJson()" disabled>Importer</button>
     </div>
   </div>
 </div>
@@ -585,33 +240,46 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── STATE ────────────────────────────────────────────────────────────────────
-const STORAGE_KEY = 'wdw_index_v2';
-let db = {"issues":{"Janvier 2022":{"articles":[{"title":"Thank You for 100 Issues","category":"Général","page":"2"},{"title":"Disney Enchantment: Come for the Fireworks, Stay for the Projections","category":"Général","page":"4"},{"title":"Disney Fab 50 Character Collection","category":"Général","page":"8"},{"title":"Have Your Cake and Eat It Too: WDW's 50th Anniversary Menu","category":"Restaurant/Bar","page":"10"},{"title":"50th Fashion","category":"Général","page":"14"},{"title":"Discovering New Magic: These 3 New Shows Bring the Magic at Walt Disney World","category":"Général","page":"16"},{"title":"The Beacons of Magic","category":"Général","page":"18"},{"title":"Experience the Magic and Secrets of Cinderella Castle","category":"Attraction","page":"22"},{"title":"A Quote from Walt Disney","category":"Général","page":"28"},{"title":"Imagineering Walt Disney's Dream","category":"Général","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"25th Anniversary Flashbacks: We Tracked Down a Guy Who Helped Design That Castle Cake","category":"Général","page":"34"},{"title":"The Most Magical Birthdays on Earth: With Kids","category":"Général","page":"42"},{"title":"Disney's Polynesian Village Resort: An Opening-Day Original","category":"Hôtel","page":"44"},{"title":"Top 5 Opening-Day Attractions","category":"Attraction","page":"50"},{"title":"Time Travel by Map: Opening Day at Magic Kingdom","category":"Général","page":"52"},{"title":"Disneybounders: Mickey & Minnie Mouse","category":"Général","page":"58"},{"title":"Did You Know? Nostalgic Nuggets from WDW's Opening Day","category":"Général","page":"62"}]},"Août 2022":{"articles":[{"title":"Everything You Should Know About Transportation at Disney World","category":"Général","page":"2"},{"title":"All Aboard the Disney Wish","category":"Général","page":"12"},{"title":"Top 5 Unconventional Movers of People","category":"Général","page":"18"},{"title":"7 Tips from runDisney Pros","category":"Général","page":"20"},{"title":"Discovering New Magic: Golf Cart Rentals at Fort Wilderness","category":"Hôtel","page":"24"},{"title":"Keeping Time with Aerosmith","category":"Attraction","page":"26"},{"title":"The Trolley Car Cafe","category":"Restaurant/Bar","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Why You'll Fall in Love with Trains at Tokyo Disney Resort","category":"Général","page":"34"},{"title":"Disneybounders: Vanellope","category":"Général","page":"38"},{"title":"A Quote from Vanellope","category":"Général","page":"40"},{"title":"PeopleMover Magic","category":"Attraction","page":"42"},{"title":"Bygone Transportation","category":"Général","page":"47"},{"title":"That Time We Hopped on a Double-Decker Bus at Epcot","category":"Général","page":"48"},{"title":"The Magic Collection by Judith March","category":"Général","page":"49"},{"title":"Dinner and a Show: Sci-Fi Dine-In Theater","category":"Restaurant/Bar","page":"50"},{"title":"STEM on Test Track: With Kids!","category":"Attraction","page":"56"},{"title":"Petunia Pickle Bottom","category":"Général","page":"59"},{"title":"World of Motion","category":"Attraction","page":"60"},{"title":"Did You Know? Old-Timey Transportation at Disney","category":"Général","page":"62"}]},"Septembre 2022":{"articles":[{"title":"The Lore Behind Big Thunder Mountain","category":"Attraction","page":"2"},{"title":"Big Thunder Mountain Around the World","category":"Attraction","page":"10"},{"title":"Big Thunder Mountain Railroad: The Wildest Game in the Wilderness","category":"Attraction","page":"12"},{"title":"Top 5 Disney Horses","category":"Général","page":"16"},{"title":"The Hidden Secrets of Tom Sawyer Island","category":"Attraction","page":"18"},{"title":"Discovering New Magic: Slow Ride, Take It Easy","category":"Général","page":"24"},{"title":"Frontierland: An American Tale","category":"Général","page":"26"},{"title":"Vintage Frontierland","category":"Général","page":"31"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Disney Barbecue Throwdown","category":"Restaurant/Bar","page":"34"},{"title":"Disneybounders: Woody & Jessie","category":"Général","page":"40"},{"title":"Glamping at Fort Wilderness: 101 Ways to Not Rough It","category":"Hôtel","page":"42"},{"title":"Merch of the Month: Halloween Harvest","category":"Général","page":"48"},{"title":"Get a Taste of Adventure at Disney World's Wildest Resorts","category":"Hôtel","page":"50"},{"title":"Stick to Yer Ribs","category":"Restaurant/Bar","page":"54"},{"title":"A Quote from Woody","category":"Général","page":"56"},{"title":"Tackling Toy Story Land with Kids","category":"Attraction","page":"58"},{"title":"Did You Know? Frontierlands Around the World","category":"Général","page":"62"}]},"Octobre 2022":{"articles":[{"title":"Yesterday's Vision of Tomorrow: The Original E.P.C.O.T. Plan","category":"Général","page":"2"},{"title":"The Legendary Composers of Epcot","category":"Général","page":"8"},{"title":"Gone But Not Forgotten: The Lost Pavilions of Epcot Center","category":"Général","page":"10"},{"title":"Discovering New Magic: Welcome to the Neighborhoods","category":"Général","page":"16"},{"title":"A Quote from Dreamfinder","category":"Général","page":"20"},{"title":"Epcot Then & Now","category":"Général","page":"23"},{"title":"Harmonious: A Show That Could Only Be Done at Epcot","category":"Attraction","page":"24"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Connecting with Flavor: Global Flavors at Epcot's Connections","category":"Restaurant/Bar","page":"34"},{"title":"Merch of the Month: Epcot","category":"Général","page":"40"},{"title":"Spaceship Earth: A Disney Icon","category":"Attraction","page":"42"},{"title":"Food & Wine Festival with Kids","category":"Restaurant/Bar","page":"48"},{"title":"Taste Around the World","category":"Restaurant/Bar","page":"52"},{"title":"Disneybounders: Remy","category":"Général","page":"54"},{"title":"Top 5 Hidden Gems in World Showcase","category":"Général","page":"56"},{"title":"Disney World's Crescent Lake Resorts","category":"Hôtel","page":"58"},{"title":"Did You Know? Backstage Tours at Walt Disney World","category":"Général","page":"62"}]},"Novembre 2022":{"articles":[{"title":"Guardians of the Galaxy: Cosmic Rewind","category":"Attraction","page":"2"},{"title":"Worlds of Marvel","category":"Général","page":"10"},{"title":"Inside the Artistic Mastery of Disney's Hotel New York - The Art of Marvel","category":"Hôtel","page":"14"},{"title":"Top 5 Out-of-This-World Snacks","category":"Restaurant/Bar","page":"18"},{"title":"The Beastly Kingdom That Never Was","category":"Général","page":"20"},{"title":"A Great, Big, Beautiful Tomorrowland","category":"Général","page":"26"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Out-of-This-World Flavors at Space 220","category":"Restaurant/Bar","page":"34"},{"title":"Mysterious Island: Disney's Best Themed Area You've Never Heard Of","category":"Général","page":"42"},{"title":"Discovering New Magic: Past and Present Secrets of Tomorrowland","category":"Général","page":"46"},{"title":"FÜL Bags x Star Wars","category":"Général","page":"49"},{"title":"Imagineering Star Wars: Galactic Starcruiser","category":"Hôtel","page":"50"},{"title":"Disneybounders: Batuu","category":"Général","page":"54"},{"title":"A Quote from George Lucas","category":"Général","page":"56"},{"title":"This Is the Droid You're Looking For: With Kids!","category":"Attraction","page":"58"},{"title":"Did You Know? Pandora's Guarded Secrets","category":"Général","page":"62"},{"title":"Staff Credits and Statement of Ownership","category":"Général","page":"64"}]},"Décembre 2022":{"articles":[{"title":"Disney's Wilderness Lodge: Yellowstone Meets the North Pole","category":"Hôtel","page":"2"},{"title":"The Great Resort Christmas Tree Challenge","category":"Hôtel","page":"8"},{"title":"Fort Wilderness Holiday Sleigh Ride","category":"Hôtel","page":"10"},{"title":"Disneybounders: Chip 'N' Dale","category":"Général","page":"14"},{"title":"Top 5 DVC Holiday Stays","category":"Hôtel","page":"16"},{"title":"Meet Epcot's Holiday Storytellers","category":"Général","page":"18"},{"title":"Celebrating Hanukkah at Disney World with Kids!","category":"Général","page":"24"},{"title":"Jingle Cruising All the Way","category":"Attraction","page":"26"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"The First Christmas at Disney World","category":"Général","page":"34"},{"title":"Disney Christmas Around the World","category":"Général","page":"38"},{"title":"Let It Snosnow","category":"Général","page":"40"},{"title":"Epcot's Candlelight Processional Dining Packages","category":"Restaurant/Bar","page":"42"},{"title":"A Quote from Judy the Elf","category":"Général","page":"48"},{"title":"Imagineering the Holidays at Disney's Animal Kingdom","category":"Général","page":"50"},{"title":"Jock Lindsey's Hangar Holiday Bar","category":"Restaurant/Bar","page":"54"},{"title":"Deck the Halls with Buckets & Sippers","category":"Restaurant/Bar","page":"57"},{"title":"Merch of the Month: Christmas","category":"Général","page":"58"},{"title":"Cheers: Joffrey's Peppermint Mocha Latte","category":"Restaurant/Bar","page":"60"},{"title":"Did You Know? Holiday Sweet Spots at WDW","category":"Général","page":"62"}]},"Janvier 2023":{"articles":[{"title":"How We Lived at Disney World for an Entire Year","category":"Général","page":"2"},{"title":"Disney Resort Lobby Scent-sation","category":"Hôtel","page":"8"},{"title":"DVC Secret Spots to Explore","category":"Hôtel","page":"10"},{"title":"Say Aloha Kakahiaka to Kona Cafe","category":"Restaurant/Bar","page":"14"},{"title":"Stateroom Details on the Disney Wish","category":"Général","page":"18"},{"title":"A Fort Wilderness Family","category":"Hôtel","page":"20"},{"title":"Disneybounders: Tower of Terror","category":"Attraction","page":"24"},{"title":"Reserve Some Magic at the Swan Reserve","category":"Hôtel","page":"26"},{"title":"Top 5 Resorts for Fireworks Viewing","category":"Hôtel","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"An Accommodation Alternative","category":"Hôtel","page":"34"},{"title":"DisBnb - Swiss Family Treehouse","category":"Attraction","page":"38"},{"title":"Discovering New Magic: Direct-to-Room Service","category":"Hôtel","page":"40"},{"title":"WDW Massage Chairs","category":"Général","page":"43"},{"title":"Wake Up Inside a Disney Park","category":"Général","page":"44"},{"title":"10 Best Resort Coffees at WDW","category":"Restaurant/Bar","page":"48"},{"title":"Resort Delivery with Kids!","category":"Hôtel","page":"52"},{"title":"A Quote from Mary Blair","category":"Général","page":"54"},{"title":"WDW Resort Hotel Dining Awards","category":"Restaurant/Bar","page":"56"},{"title":"Merch of the Month: Resorts","category":"Général","page":"60"},{"title":"Did You Know? \"Check Out\" These WDW Resort Facts","category":"Hôtel","page":"62"}]},"Février 2023":{"articles":[{"title":"Over, Sideways, and Under: A Brief History of Disney Coaster Technology","category":"Attraction","page":"2"},{"title":"Disney by the Numbers","category":"Général","page":"10"},{"title":"Discovering New MagicBand+","category":"Général","page":"12"},{"title":"Anatomy of a Gastro Cocktail","category":"Restaurant/Bar","page":"15"},{"title":"Gadgets & Gizmos Aplenty: Molecular Gastronomy at WDW","category":"Restaurant/Bar","page":"16"},{"title":"Disneybounders: Gadget Hackwrench","category":"Général","page":"20"},{"title":"All Your Genie+ Questions Answered","category":"Général","page":"22"},{"title":"Hey Disney!","category":"Général","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Lights Over Paris","category":"Général","page":"34"},{"title":"Seven Dwarfs Mine Train: Telling an Old Story with New Tech","category":"Attraction","page":"36"},{"title":"A Quote from Dr. Stevens","category":"Général","page":"42"},{"title":"Learning with the Land","category":"Attraction","page":"44"},{"title":"Merch of the Month: Tech in the Parks","category":"Général","page":"50"},{"title":"Gotta Catch 'Em All: With Kids!","category":"Général","page":"52"},{"title":"Top 5 Interactive Queue Games","category":"Attraction","page":"56"},{"title":"Computer Central: The Core of Retro Epcot","category":"Général","page":"58"},{"title":"It's Always Time for Mickey","category":"Général","page":"61"},{"title":"Did You Know? Explore Our Evolution Inside Spaceship Earth","category":"Attraction","page":"62"}]},"Mars 2023":{"articles":[{"title":"Remembering Lillian Disney","category":"Général","page":"2"},{"title":"Discovering New Magic: What You Didn't Know About Minnie Mouse","category":"Général","page":"6"},{"title":"Disneybounders: Mirabel","category":"Général","page":"10"},{"title":"Making Space at the Table: A Conversation with Chef Dee","category":"Restaurant/Bar","page":"12"},{"title":"Harriet Burns: A Pioneer of Walt Disney Imagineering","category":"Général","page":"16"},{"title":"Bayou Magic","category":"Général","page":"18"},{"title":"A Budget-Friendly Princess Day: With Kids!","category":"Général","page":"24"},{"title":"For the First Time in Forever: A Celebration of Selfless Love","category":"Général","page":"28"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"What It Takes to Run the Princess Half Marathon","category":"Général","page":"34"},{"title":"Top 5 Underrated Disney Villainesses","category":"Général","page":"40"},{"title":"A Profile of Imagineer Sachi Handke","category":"Général","page":"42"},{"title":"Disney Wish Staterooms: Magic on the High Seas","category":"Général","page":"46"},{"title":"The Gift of Grandmothers","category":"Général","page":"52"},{"title":"Rallying Cry","category":"Général","page":"54"},{"title":"A Quote from Mirabel","category":"Général","page":"56"},{"title":"Merch of the Month: Her Universe","category":"Général","page":"58"},{"title":"Fairy Tales Do Come True","category":"Général","page":"60"},{"title":"Did You Know? Women in Disney History","category":"Général","page":"62"}]},"Avril 2023":{"articles":[{"title":"The Shows of Kilimanjaro","category":"Attraction","page":"2"},{"title":"Sunrise on the Savanna: Animal Kingdom's Opening Day","category":"Général","page":"8"},{"title":"Nāhtāzū","category":"Attraction","page":"12"},{"title":"Sunset on the Savanna at Disney's Animal Kingdom","category":"Général","page":"14"},{"title":"A Quote from Tsireya","category":"Général","page":"18"},{"title":"Building a Theme Park for Nature","category":"Général","page":"20"},{"title":"Top 5 Coolest Creature Encounters","category":"Attraction","page":"26"},{"title":"Photographing Animal Kingdom","category":"Général","page":"28"},{"title":"The Tree of Life Carvings","category":"Attraction","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Safari Staycation","category":"Hôtel","page":"34"},{"title":"Once Upon a Tiger","category":"Général","page":"40"},{"title":"Discovering New Magic: Why You Otta Go to Otter Grotto","category":"Attraction","page":"44"},{"title":"Animal Kingdom Trail Maps","category":"Général","page":"46"},{"title":"Welcome to Tusker House","category":"Restaurant/Bar","page":"48"},{"title":"Disneybounders: The Lion King","category":"Général","page":"52"},{"title":"Merch of the Month: Animal Merch","category":"Général","page":"54"},{"title":"The Boneyard: With Kids!","category":"Attraction","page":"56"},{"title":"And, Uh... Fly","category":"Général","page":"59"},{"title":"Hike Down Memory Lane at Camp Minnie-Mickey","category":"Général","page":"60"},{"title":"Did You Know? Cultural Authenticity at Animal Kingdom","category":"Général","page":"62"}]},"Mai 2023":{"articles":[{"title":"Walt Disney World Parades","category":"Général","page":"2"},{"title":"The Dapper Dans","category":"Général","page":"7"},{"title":"Imagineering Festival of the Lion King","category":"Attraction","page":"8"},{"title":"Top 5 Bygone Shows","category":"Général","page":"12"},{"title":"Stage Shows at After-Hours Events","category":"Général","page":"14"},{"title":"Discovering New Magic: Mickey's Magical Friendship Faire","category":"Attraction","page":"18"},{"title":"The Hoop-Dee-Doo Revue","category":"Restaurant/Bar","page":"20"},{"title":"A Frozen Dining Adventure on the Wish","category":"Restaurant/Bar","page":"26"},{"title":"Happily Ever After Returns","category":"Général","page":"30"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Indiana Jones and the Temple of Disney","category":"Attraction","page":"34"},{"title":"The Edison Kicks It Old School","category":"Restaurant/Bar","page":"38"},{"title":"Meet the Cruise Directors of the Disney Wish","category":"Général","page":"40"},{"title":"Monsters, Inc. Laugh Floor: With Kids!","category":"Attraction","page":"44"},{"title":"Step Into the World of Disney Animation","category":"Général","page":"46"},{"title":"The Magical Live Entertainment at Walt Disney World Resorts","category":"Général","page":"48"},{"title":"Remembering Kitchen Kabaret","category":"Restaurant/Bar","page":"51"},{"title":"Disneybounders: The Dapper Dans","category":"Général","page":"52"},{"title":"A Quote from Country Bear Jamboree","category":"Général","page":"54"},{"title":"How the Pavement Tells a Story","category":"Général","page":"56"},{"title":"Merch of the Month","category":"Général","page":"60"},{"title":"Did You Know? Center Stage at Walt Disney World","category":"Général","page":"62"}]},"Juin 2023":{"articles":[{"title":"Discovering New Magic: Scuba Diving Under the Sea with Nemo & Friends","category":"Attraction","page":"2"},{"title":"Halle Bailey Makes a Splash","category":"Général","page":"6"},{"title":"The Little Mermaid on the Disney Wish","category":"Général","page":"8"},{"title":"Mermaid Lagoon at Tokyo DisneySea","category":"Attraction","page":"10"},{"title":"A Quote from Luca","category":"Général","page":"14"},{"title":"Remembering Epcot's Maelstrom","category":"Attraction","page":"16"},{"title":"Imagineering Blizzard Beach","category":"Attraction","page":"20"},{"title":"Top 5 Disney Resort Pools","category":"Hôtel","page":"24"},{"title":"Happiness Is Where You Are at Disney's Polynesian Village Resort","category":"Hôtel","page":"26"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"Pixar Day at Sea","category":"Général","page":"34"},{"title":"Finding Nemo: The Big Blue... and Beyond!","category":"Attraction","page":"40"},{"title":"Finding Dory's Friends: With Kids!","category":"Attraction","page":"42"},{"title":"Fantasia Gardens Miniature Golf","category":"Attraction","page":"45"},{"title":"Coral Reef: A Disney Classic","category":"Restaurant/Bar","page":"46"},{"title":"Waterside Dining at Walt Disney World","category":"Restaurant/Bar","page":"52"},{"title":"Loungefly Brings The Little Mermaid to Life","category":"Général","page":"56"},{"title":"Disneybounders: Ariel","category":"Général","page":"58"},{"title":"How Disney Helps Keep Our Oceans Amazing","category":"Général","page":"60"},{"title":"Did You Know? Pool Facts","category":"Général","page":"62"}]},"Juillet 2023":{"articles":[{"title":"Passport to Adventureland","category":"Général","page":"2"},{"title":"Top 5 Favorite Jungle Cruise Moments","category":"Attraction","page":"8"},{"title":"Skipper Canteen: The Food's a Little Funny Here","category":"Restaurant/Bar","page":"10"},{"title":"Disneybounders: Jungle Cruise Skippers","category":"Général","page":"16"},{"title":"Adventures by Disney Trip to Peru","category":"Général","page":"18"},{"title":"National Geographic Expeditions Join the Exploration","category":"Général","page":"22"},{"title":"Welcome to Morocco","category":"Général","page":"26"},{"title":"Something to C.R.O.W. About: The Canoe Races of the World at WDW","category":"Général","page":"28"},{"title":"Centerfold","category":"Général","page":"32"},{"title":"The Treehouse Villas at Disney's Saratoga Springs Resort & Spa","category":"Hôtel","page":"34"},{"title":"The Lost Treasure of Discovery Island","category":"Général","page":"40"},{"title":"Tiki Tales","category":"Général","page":"43"},{"title":"The Origin of Walt Disney's Enchanted Tiki Room","category":"Attraction","page":"44"},{"title":"Stitch Invades Tokyo Disneyland's Enchanted Tiki Room","category":"Attraction","page":"48"},{"title":"Merch of the Month: Disney Aloha Wear","category":"Général","page":"51"},{"title":"Discovering New Magic: DuckTales World Showcase Adventure","category":"Attraction","page":"52"},{"title":"History Comes to Life at the American Adventure with Kids","category":"Attraction","page":"54"},{"title":"A Quote from Jack Sparrow","category":"Général","page":"58"},{"title":"Creating the EMV System for Dinosaur","category":"Attraction","page":"60"},{"title":"Did You Know? The Society of Explorers and Adventurers","category":"Général","page":"62"}]}}};
-let currentFilter = 'all';
-let currentSearch = '';
+// ── STATE ─────────────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'wdw_index_v3';
+let db = {"issues":{"Janvier 2022":{"articles":[{"title":"Thank You for 100 Issues","category":"Général","page":"2","sublocation":null},{"title":"Disney Enchantment: Come for the Fireworks, Stay for the Projections","category":"Général","page":"4","sublocation":null},{"title":"Disney Fab 50 Character Collection","category":"Général","page":"8","sublocation":null},{"title":"Have Your Cake and Eat It Too: WDW's 50th Anniversary Menu","category":"Restaurant/Bar","page":"10","sublocation":null},{"title":"50th Fashion","category":"Général","page":"14","sublocation":null},{"title":"Discovering New Magic: These 3 New Shows Bring the Magic at Walt Disney World","category":"Général","page":"16","sublocation":null},{"title":"The Beacons of Magic","category":"Général","page":"18","sublocation":null},{"title":"Experience the Magic and Secrets of Cinderella Castle","category":"Attraction","page":"22","sublocation":"MK"},{"title":"A Quote from Walt Disney","category":"Général","page":"28","sublocation":null},{"title":"Imagineering Walt Disney's Dream","category":"Général","page":"30","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"25th Anniversary Flashbacks: We Tracked Down a Guy Who Helped Design That Castle Cake","category":"Général","page":"34","sublocation":null},{"title":"The Most Magical Birthdays on Earth: With Kids","category":"Général","page":"42","sublocation":null},{"title":"Disney's Polynesian Village Resort: An Opening-Day Original","category":"Hôtel","page":"44","sublocation":null},{"title":"Top 5 Opening-Day Attractions","category":"Attraction","page":"50","sublocation":null},{"title":"Time Travel by Map: Opening Day at Magic Kingdom","category":"Général","page":"52","sublocation":null},{"title":"Disneybounders: Mickey & Minnie Mouse","category":"Général","page":"58","sublocation":null},{"title":"Did You Know? Nostalgic Nuggets from WDW's Opening Day","category":"Général","page":"62","sublocation":null}]},"Août 2022":{"articles":[{"title":"Everything You Should Know About Transportation at Disney World","category":"Général","page":"2","sublocation":null},{"title":"All Aboard the Disney Wish","category":"Croisière","page":"12","sublocation":null},{"title":"Top 5 Unconventional Movers of People","category":"Général","page":"18","sublocation":null},{"title":"7 Tips from runDisney Pros","category":"Général","page":"20","sublocation":null},{"title":"Discovering New Magic: Golf Cart Rentals at Fort Wilderness","category":"Hôtel","page":"24","sublocation":null},{"title":"Keeping Time with Aerosmith","category":"Attraction","page":"26","sublocation":"HS"},{"title":"The Trolley Car Cafe","category":"Restaurant/Bar","page":"30","sublocation":"HS"},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Why You'll Fall in Love with Trains at Tokyo Disney Resort","category":"Général","page":"34","sublocation":null},{"title":"Disneybounders: Vanellope","category":"Général","page":"38","sublocation":null},{"title":"A Quote from Vanellope","category":"Général","page":"40","sublocation":null},{"title":"PeopleMover Magic","category":"Attraction","page":"42","sublocation":"MK"},{"title":"Bygone Transportation","category":"Général","page":"47","sublocation":null},{"title":"That Time We Hopped on a Double-Decker Bus at Epcot","category":"Général","page":"48","sublocation":null},{"title":"The Magic Collection by Judith March","category":"Général","page":"49","sublocation":null},{"title":"Dinner and a Show: Sci-Fi Dine-In Theater","category":"Restaurant/Bar","page":"50","sublocation":"HS"},{"title":"STEM on Test Track: With Kids!","category":"Attraction","page":"56","sublocation":"EPCOT"},{"title":"Petunia Pickle Bottom","category":"Général","page":"59","sublocation":null},{"title":"World of Motion","category":"Attraction","page":"60","sublocation":"EPCOT"},{"title":"Did You Know? Old-Timey Transportation at Disney","category":"Général","page":"62","sublocation":null}]},"Septembre 2022":{"articles":[{"title":"The Lore Behind Big Thunder Mountain","category":"Attraction","page":"2","sublocation":"MK"},{"title":"Big Thunder Mountain Around the World","category":"Attraction","page":"10","sublocation":"MK"},{"title":"Big Thunder Mountain Railroad: The Wildest Game in the Wilderness","category":"Attraction","page":"12","sublocation":"MK"},{"title":"Top 5 Disney Horses","category":"Général","page":"16","sublocation":null},{"title":"The Hidden Secrets of Tom Sawyer Island","category":"Attraction","page":"18","sublocation":"MK"},{"title":"Discovering New Magic: Slow Ride, Take It Easy","category":"Général","page":"24","sublocation":null},{"title":"Frontierland: An American Tale","category":"Général","page":"26","sublocation":null},{"title":"Vintage Frontierland","category":"Général","page":"31","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Disney Barbecue Throwdown","category":"Restaurant/Bar","page":"34","sublocation":null},{"title":"Disneybounders: Woody & Jessie","category":"Général","page":"40","sublocation":null},{"title":"Glamping at Fort Wilderness: 101 Ways to Not Rough It","category":"Hôtel","page":"42","sublocation":null},{"title":"Merch of the Month: Halloween Harvest","category":"Général","page":"48","sublocation":null},{"title":"Get a Taste of Adventure at Disney World's Wildest Resorts","category":"Hôtel","page":"50","sublocation":null},{"title":"Stick to Yer Ribs","category":"Restaurant/Bar","page":"54","sublocation":null},{"title":"A Quote from Woody","category":"Général","page":"56","sublocation":null},{"title":"Tackling Toy Story Land with Kids","category":"Attraction","page":"58","sublocation":"HS"},{"title":"Did You Know? Frontierlands Around the World","category":"Général","page":"62","sublocation":null}]},"Octobre 2022":{"articles":[{"title":"Yesterday's Vision of Tomorrow: The Original E.P.C.O.T. Plan","category":"Général","page":"2","sublocation":null},{"title":"The Legendary Composers of Epcot","category":"Général","page":"8","sublocation":null},{"title":"Gone But Not Forgotten: The Lost Pavilions of Epcot Center","category":"Général","page":"10","sublocation":null},{"title":"Discovering New Magic: Welcome to the Neighborhoods","category":"Général","page":"16","sublocation":null},{"title":"A Quote from Dreamfinder","category":"Général","page":"20","sublocation":null},{"title":"Epcot Then & Now","category":"Général","page":"23","sublocation":null},{"title":"Harmonious: A Show That Could Only Be Done at Epcot","category":"Attraction","page":"24","sublocation":"EPCOT"},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Connecting with Flavor: Global Flavors at Epcot's Connections","category":"Restaurant/Bar","page":"34","sublocation":"EPCOT"},{"title":"Merch of the Month: Epcot","category":"Général","page":"40","sublocation":null},{"title":"Spaceship Earth: A Disney Icon","category":"Attraction","page":"42","sublocation":"EPCOT"},{"title":"Food & Wine Festival with Kids","category":"Restaurant/Bar","page":"48","sublocation":"EPCOT"},{"title":"Taste Around the World","category":"Restaurant/Bar","page":"52","sublocation":null},{"title":"Disneybounders: Remy","category":"Général","page":"54","sublocation":null},{"title":"Top 5 Hidden Gems in World Showcase","category":"Général","page":"56","sublocation":null},{"title":"Disney World's Crescent Lake Resorts","category":"Hôtel","page":"58","sublocation":null},{"title":"Did You Know? Backstage Tours at Walt Disney World","category":"Général","page":"62","sublocation":null}]},"Novembre 2022":{"articles":[{"title":"Guardians of the Galaxy: Cosmic Rewind","category":"Attraction","page":"2","sublocation":"EPCOT"},{"title":"Worlds of Marvel","category":"Général","page":"10","sublocation":null},{"title":"Inside the Artistic Mastery of Disney's Hotel New York - The Art of Marvel","category":"Hôtel","page":"14","sublocation":null},{"title":"Top 5 Out-of-This-World Snacks","category":"Restaurant/Bar","page":"18","sublocation":null},{"title":"The Beastly Kingdom That Never Was","category":"Général","page":"20","sublocation":null},{"title":"A Great, Big, Beautiful Tomorrowland","category":"Général","page":"26","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Out-of-This-World Flavors at Space 220","category":"Restaurant/Bar","page":"34","sublocation":"EPCOT"},{"title":"Mysterious Island: Disney's Best Themed Area You've Never Heard Of","category":"Général","page":"42","sublocation":null},{"title":"Discovering New Magic: Past and Present Secrets of Tomorrowland","category":"Général","page":"46","sublocation":null},{"title":"FÜL Bags x Star Wars","category":"Général","page":"49","sublocation":null},{"title":"Imagineering Star Wars: Galactic Starcruiser","category":"Hôtel","page":"50","sublocation":null},{"title":"Disneybounders: Batuu","category":"Général","page":"54","sublocation":null},{"title":"A Quote from George Lucas","category":"Général","page":"56","sublocation":null},{"title":"This Is the Droid You're Looking For: With Kids!","category":"Attraction","page":"58","sublocation":null},{"title":"Did You Know? Pandora's Guarded Secrets","category":"Général","page":"62","sublocation":null},{"title":"Staff Credits and Statement of Ownership","category":"Général","page":"64","sublocation":null}]},"Décembre 2022":{"articles":[{"title":"Disney's Wilderness Lodge: Yellowstone Meets the North Pole","category":"Hôtel","page":"2","sublocation":null},{"title":"The Great Resort Christmas Tree Challenge","category":"Hôtel","page":"8","sublocation":null},{"title":"Fort Wilderness Holiday Sleigh Ride","category":"Hôtel","page":"10","sublocation":null},{"title":"Disneybounders: Chip 'N' Dale","category":"Général","page":"14","sublocation":null},{"title":"Top 5 DVC Holiday Stays","category":"Hôtel","page":"16","sublocation":null},{"title":"Meet Epcot's Holiday Storytellers","category":"Général","page":"18","sublocation":null},{"title":"Celebrating Hanukkah at Disney World with Kids!","category":"Général","page":"24","sublocation":null},{"title":"Jingle Cruising All the Way","category":"Attraction","page":"26","sublocation":"MK"},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"The First Christmas at Disney World","category":"Général","page":"34","sublocation":null},{"title":"Disney Christmas Around the World","category":"Général","page":"38","sublocation":null},{"title":"Let It Snosnow","category":"Général","page":"40","sublocation":null},{"title":"Epcot's Candlelight Processional Dining Packages","category":"Restaurant/Bar","page":"42","sublocation":"EPCOT"},{"title":"A Quote from Judy the Elf","category":"Général","page":"48","sublocation":null},{"title":"Imagineering the Holidays at Disney's Animal Kingdom","category":"Général","page":"50","sublocation":null},{"title":"Jock Lindsey's Hangar Holiday Bar","category":"Restaurant/Bar","page":"54","sublocation":"Disney Springs"},{"title":"Deck the Halls with Buckets & Sippers","category":"Restaurant/Bar","page":"57","sublocation":null},{"title":"Merch of the Month: Christmas","category":"Général","page":"58","sublocation":null},{"title":"Cheers: Joffrey's Peppermint Mocha Latte","category":"Restaurant/Bar","page":"60","sublocation":"Resorts"},{"title":"Did You Know? Holiday Sweet Spots at WDW","category":"Général","page":"62","sublocation":null}]},"Janvier 2023":{"articles":[{"title":"How We Lived at Disney World for an Entire Year","category":"Général","page":"2","sublocation":null},{"title":"Disney Resort Lobby Scent-sation","category":"Hôtel","page":"8","sublocation":null},{"title":"DVC Secret Spots to Explore","category":"Hôtel","page":"10","sublocation":null},{"title":"Say Aloha Kakahiaka to Kona Cafe","category":"Restaurant/Bar","page":"14","sublocation":"Resorts"},{"title":"Stateroom Details on the Disney Wish","category":"Croisière","page":"18","sublocation":null},{"title":"A Fort Wilderness Family","category":"Hôtel","page":"20","sublocation":null},{"title":"Disneybounders: Tower of Terror","category":"Attraction","page":"24","sublocation":"HS"},{"title":"Reserve Some Magic at the Swan Reserve","category":"Hôtel","page":"26","sublocation":null},{"title":"Top 5 Resorts for Fireworks Viewing","category":"Hôtel","page":"30","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"An Accommodation Alternative","category":"Hôtel","page":"34","sublocation":null},{"title":"DisBnb - Swiss Family Treehouse","category":"Attraction","page":"38","sublocation":"MK"},{"title":"Discovering New Magic: Direct-to-Room Service","category":"Hôtel","page":"40","sublocation":null},{"title":"WDW Massage Chairs","category":"Général","page":"43","sublocation":null},{"title":"Wake Up Inside a Disney Park","category":"Général","page":"44","sublocation":null},{"title":"10 Best Resort Coffees at WDW","category":"Restaurant/Bar","page":"48","sublocation":"Resorts"},{"title":"Resort Delivery with Kids!","category":"Hôtel","page":"52","sublocation":null},{"title":"A Quote from Mary Blair","category":"Général","page":"54","sublocation":null},{"title":"WDW Resort Hotel Dining Awards","category":"Restaurant/Bar","page":"56","sublocation":"Resorts"},{"title":"Merch of the Month: Resorts","category":"Général","page":"60","sublocation":null},{"title":"Did You Know? \"Check Out\" These WDW Resort Facts","category":"Hôtel","page":"62","sublocation":null}]},"Février 2023":{"articles":[{"title":"Over, Sideways, and Under: A Brief History of Disney Coaster Technology","category":"Attraction","page":"2","sublocation":null},{"title":"Disney by the Numbers","category":"Général","page":"10","sublocation":null},{"title":"Discovering New MagicBand+","category":"Général","page":"12","sublocation":null},{"title":"Anatomy of a Gastro Cocktail","category":"Restaurant/Bar","page":"15","sublocation":null},{"title":"Gadgets & Gizmos Aplenty: Molecular Gastronomy at WDW","category":"Restaurant/Bar","page":"16","sublocation":null},{"title":"Disneybounders: Gadget Hackwrench","category":"Général","page":"20","sublocation":null},{"title":"All Your Genie+ Questions Answered","category":"Général","page":"22","sublocation":null},{"title":"Hey Disney!","category":"Général","page":"30","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Lights Over Paris","category":"Général","page":"34","sublocation":null},{"title":"Seven Dwarfs Mine Train: Telling an Old Story with New Tech","category":"Attraction","page":"36","sublocation":"MK"},{"title":"A Quote from Dr. Stevens","category":"Général","page":"42","sublocation":null},{"title":"Learning with the Land","category":"Attraction","page":"44","sublocation":"EPCOT"},{"title":"Merch of the Month: Tech in the Parks","category":"Général","page":"50","sublocation":null},{"title":"Gotta Catch 'Em All: With Kids!","category":"Général","page":"52","sublocation":null},{"title":"Top 5 Interactive Queue Games","category":"Attraction","page":"56","sublocation":null},{"title":"Computer Central: The Core of Retro Epcot","category":"Général","page":"58","sublocation":null},{"title":"It's Always Time for Mickey","category":"Général","page":"61","sublocation":null},{"title":"Did You Know? Explore Our Evolution Inside Spaceship Earth","category":"Attraction","page":"62","sublocation":"EPCOT"}]},"Mars 2023":{"articles":[{"title":"Remembering Lillian Disney","category":"Général","page":"2","sublocation":null},{"title":"Discovering New Magic: What You Didn't Know About Minnie Mouse","category":"Général","page":"6","sublocation":null},{"title":"Disneybounders: Mirabel","category":"Général","page":"10","sublocation":null},{"title":"Making Space at the Table: A Conversation with Chef Dee","category":"Restaurant/Bar","page":"12","sublocation":"Disney Springs"},{"title":"Harriet Burns: A Pioneer of Walt Disney Imagineering","category":"Général","page":"16","sublocation":null},{"title":"Bayou Magic","category":"Général","page":"18","sublocation":null},{"title":"A Budget-Friendly Princess Day: With Kids!","category":"Général","page":"24","sublocation":null},{"title":"For the First Time in Forever: A Celebration of Selfless Love","category":"Général","page":"28","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"What It Takes to Run the Princess Half Marathon","category":"Général","page":"34","sublocation":null},{"title":"Top 5 Underrated Disney Villainesses","category":"Général","page":"40","sublocation":null},{"title":"A Profile of Imagineer Sachi Handke","category":"Général","page":"42","sublocation":null},{"title":"Disney Wish Staterooms: Magic on the High Seas","category":"Croisière","page":"46","sublocation":null},{"title":"The Gift of Grandmothers","category":"Général","page":"52","sublocation":null},{"title":"Rallying Cry","category":"Général","page":"54","sublocation":null},{"title":"A Quote from Mirabel","category":"Général","page":"56","sublocation":null},{"title":"Merch of the Month: Her Universe","category":"Général","page":"58","sublocation":null},{"title":"Fairy Tales Do Come True","category":"Général","page":"60","sublocation":null},{"title":"Did You Know? Women in Disney History","category":"Général","page":"62","sublocation":null}]},"Avril 2023":{"articles":[{"title":"The Shows of Kilimanjaro","category":"Attraction","page":"2","sublocation":"AK"},{"title":"Sunrise on the Savanna: Animal Kingdom's Opening Day","category":"Général","page":"8","sublocation":null},{"title":"Nāhtāzū","category":"Attraction","page":"12","sublocation":"AK"},{"title":"Sunset on the Savanna at Disney's Animal Kingdom","category":"Général","page":"14","sublocation":null},{"title":"A Quote from Tsireya","category":"Général","page":"18","sublocation":null},{"title":"Building a Theme Park for Nature","category":"Général","page":"20","sublocation":null},{"title":"Top 5 Coolest Creature Encounters","category":"Attraction","page":"26","sublocation":null},{"title":"Photographing Animal Kingdom","category":"Général","page":"28","sublocation":null},{"title":"The Tree of Life Carvings","category":"Attraction","page":"30","sublocation":"AK"},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Safari Staycation","category":"Hôtel","page":"34","sublocation":null},{"title":"Once Upon a Tiger","category":"Général","page":"40","sublocation":null},{"title":"Discovering New Magic: Why You Otta Go to Otter Grotto","category":"Attraction","page":"44","sublocation":"AK"},{"title":"Animal Kingdom Trail Maps","category":"Général","page":"46","sublocation":null},{"title":"Welcome to Tusker House","category":"Restaurant/Bar","page":"48","sublocation":"AK"},{"title":"Disneybounders: The Lion King","category":"Général","page":"52","sublocation":null},{"title":"Merch of the Month: Animal Merch","category":"Général","page":"54","sublocation":null},{"title":"The Boneyard: With Kids!","category":"Attraction","page":"56","sublocation":"AK"},{"title":"And, Uh... Fly","category":"Général","page":"59","sublocation":null},{"title":"Hike Down Memory Lane at Camp Minnie-Mickey","category":"Général","page":"60","sublocation":null},{"title":"Did You Know? Cultural Authenticity at Animal Kingdom","category":"Général","page":"62","sublocation":null}]},"Mai 2023":{"articles":[{"title":"Walt Disney World Parades","category":"Général","page":"2","sublocation":null},{"title":"The Dapper Dans","category":"Général","page":"7","sublocation":null},{"title":"Imagineering Festival of the Lion King","category":"Attraction","page":"8","sublocation":"AK"},{"title":"Top 5 Bygone Shows","category":"Général","page":"12","sublocation":null},{"title":"Stage Shows at After-Hours Events","category":"Général","page":"14","sublocation":null},{"title":"Discovering New Magic: Mickey's Magical Friendship Faire","category":"Attraction","page":"18","sublocation":"HS"},{"title":"The Hoop-Dee-Doo Revue","category":"Restaurant/Bar","page":"20","sublocation":"Resorts"},{"title":"A Frozen Dining Adventure on the Wish","category":"Croisière","page":"26","sublocation":null},{"title":"Happily Ever After Returns","category":"Général","page":"30","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Indiana Jones and the Temple of Disney","category":"Attraction","page":"34","sublocation":"HS"},{"title":"The Edison Kicks It Old School","category":"Restaurant/Bar","page":"38","sublocation":"HS"},{"title":"Meet the Cruise Directors of the Disney Wish","category":"Croisière","page":"40","sublocation":null},{"title":"Monsters, Inc. Laugh Floor: With Kids!","category":"Attraction","page":"44","sublocation":"HS"},{"title":"Step Into the World of Disney Animation","category":"Général","page":"46","sublocation":null},{"title":"The Magical Live Entertainment at Walt Disney World Resorts","category":"Général","page":"48","sublocation":null},{"title":"Remembering Kitchen Kabaret","category":"Restaurant/Bar","page":"51","sublocation":"EPCOT"},{"title":"Disneybounders: The Dapper Dans","category":"Général","page":"52","sublocation":null},{"title":"A Quote from Country Bear Jamboree","category":"Général","page":"54","sublocation":null},{"title":"How the Pavement Tells a Story","category":"Général","page":"56","sublocation":null},{"title":"Merch of the Month","category":"Général","page":"60","sublocation":null},{"title":"Did You Know? Center Stage at Walt Disney World","category":"Général","page":"62","sublocation":null}]},"Juin 2023":{"articles":[{"title":"Discovering New Magic: Scuba Diving Under the Sea with Nemo & Friends","category":"Attraction","page":"2","sublocation":null},{"title":"Halle Bailey Makes a Splash","category":"Général","page":"6","sublocation":null},{"title":"The Little Mermaid on the Disney Wish","category":"Croisière","page":"8","sublocation":null},{"title":"Mermaid Lagoon at Tokyo DisneySea","category":"Attraction","page":"10","sublocation":null},{"title":"A Quote from Luca","category":"Général","page":"14","sublocation":null},{"title":"Remembering Epcot's Maelstrom","category":"Attraction","page":"16","sublocation":"EPCOT"},{"title":"Imagineering Blizzard Beach","category":"Attraction","page":"20","sublocation":"Water Parks"},{"title":"Top 5 Disney Resort Pools","category":"Hôtel","page":"24","sublocation":null},{"title":"Happiness Is Where You Are at Disney's Polynesian Village Resort","category":"Hôtel","page":"26","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"Pixar Day at Sea","category":"Croisière","page":"34","sublocation":null},{"title":"Finding Nemo: The Big Blue... and Beyond!","category":"Attraction","page":"40","sublocation":"EPCOT"},{"title":"Finding Dory's Friends: With Kids!","category":"Attraction","page":"42","sublocation":null},{"title":"Fantasia Gardens Miniature Golf","category":"Attraction","page":"45","sublocation":"Disney Springs"},{"title":"Coral Reef: A Disney Classic","category":"Restaurant/Bar","page":"46","sublocation":"EPCOT"},{"title":"Waterside Dining at Walt Disney World","category":"Restaurant/Bar","page":"52","sublocation":null},{"title":"Loungefly Brings The Little Mermaid to Life","category":"Général","page":"56","sublocation":null},{"title":"Disneybounders: Ariel","category":"Général","page":"58","sublocation":null},{"title":"How Disney Helps Keep Our Oceans Amazing","category":"Général","page":"60","sublocation":null},{"title":"Did You Know? Pool Facts","category":"Général","page":"62","sublocation":null}]},"Juillet 2023":{"articles":[{"title":"Passport to Adventureland","category":"Général","page":"2","sublocation":null},{"title":"Top 5 Favorite Jungle Cruise Moments","category":"Attraction","page":"8","sublocation":"MK"},{"title":"Skipper Canteen: The Food's a Little Funny Here","category":"Restaurant/Bar","page":"10","sublocation":"MK"},{"title":"Disneybounders: Jungle Cruise Skippers","category":"Général","page":"16","sublocation":null},{"title":"Adventures by Disney Trip to Peru","category":"Général","page":"18","sublocation":null},{"title":"National Geographic Expeditions Join the Exploration","category":"Général","page":"22","sublocation":null},{"title":"Welcome to Morocco","category":"Général","page":"26","sublocation":null},{"title":"Something to C.R.O.W. About: The Canoe Races of the World at WDW","category":"Général","page":"28","sublocation":null},{"title":"Centerfold","category":"Général","page":"32","sublocation":null},{"title":"The Treehouse Villas at Disney's Saratoga Springs Resort & Spa","category":"Hôtel","page":"34","sublocation":null},{"title":"The Lost Treasure of Discovery Island","category":"Général","page":"40","sublocation":null},{"title":"Tiki Tales","category":"Général","page":"43","sublocation":null},{"title":"The Origin of Walt Disney's Enchanted Tiki Room","category":"Attraction","page":"44","sublocation":"MK"},{"title":"Stitch Invades Tokyo Disneyland's Enchanted Tiki Room","category":"Attraction","page":"48","sublocation":"MK"},{"title":"Merch of the Month: Disney Aloha Wear","category":"Général","page":"51","sublocation":null},{"title":"Discovering New Magic: DuckTales World Showcase Adventure","category":"Attraction","page":"52","sublocation":"EPCOT"},{"title":"History Comes to Life at the American Adventure with Kids","category":"Attraction","page":"54","sublocation":"EPCOT"},{"title":"A Quote from Jack Sparrow","category":"Général","page":"58","sublocation":null},{"title":"Creating the EMV System for Dinosaur","category":"Attraction","page":"60","sublocation":"AK"},{"title":"Did You Know? The Society of Explorers and Adventurers","category":"Général","page":"62","sublocation":null}]}}};
+const PRELOADED_DB = JSON.parse(JSON.stringify(db));
+let currentFilter  = 'all';
+let currentSubloc  = 'all';
+let currentSearch  = '';
 
-// ─── PERSISTENCE ──────────────────────────────────────────────────────────────
+// Sub-location labels
+const SUBLOC_LABELS = {
+  'MK':            '🏰 Magic Kingdom',
+  'EPCOT':         '🌍 EPCOT',
+  'HS':            '🎬 Hollywood Studios',
+  'AK':            '🦁 Animal Kingdom',
+  'Water Parks':   '🌊 Parcs aquatiques',
+  'Disney Springs':'🛍️ Disney Springs',
+  'Resorts':       '🏨 Resorts',
+};
+
+// Categories that show the subloc filter
+const SUBLOC_CATS = new Set(['Attraction', 'Restaurant/Bar']);
+
+// ── PERSISTENCE ───────────────────────────────────────────────────────────────
 function save() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); } catch(e) {}
 }
-const PRELOADED_DB = JSON.parse(JSON.stringify(db)); // snapshot of built-in data
 function load() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw);
-      // Merge saved data on top of preloaded
-      for (const [issue, data] of Object.entries(saved.issues || {})) {
-        if (!db.issues[issue]) {
-          db.issues[issue] = data;
-        } else {
-          const existingTitles = new Set(db.issues[issue].articles.map(a => a.title.toLowerCase()));
-          for (const art of data.articles) {
-            if (!existingTitles.has(art.title.toLowerCase())) {
-              db.issues[issue].articles.push(art);
-              existingTitles.add(art.title.toLowerCase());
-            }
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    for (const [issue, data] of Object.entries(saved.issues || {})) {
+      if (!db.issues[issue]) {
+        db.issues[issue] = data;
+      } else {
+        const existingTitles = new Set(db.issues[issue].articles.map(a => a.title.toLowerCase()));
+        for (const art of data.articles) {
+          if (!existingTitles.has(art.title.toLowerCase())) {
+            db.issues[issue].articles.push(art);
+            existingTitles.add(art.title.toLowerCase());
           }
         }
       }
@@ -619,7 +287,7 @@ function load() {
   } catch(e) {}
 }
 
-// ─── MONTH SORT ───────────────────────────────────────────────────────────────
+// ── MONTH SORT ────────────────────────────────────────────────────────────────
 const MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
 function issueToDate(label) {
   const parts = label.toLowerCase().split(/\s+/);
@@ -628,21 +296,68 @@ function issueToDate(label) {
   return new Date(y, m < 0 ? 0 : m, 1);
 }
 
-// ─── RENDER ───────────────────────────────────────────────────────────────────
-function allArticles() {
-  const arr = [];
-  for (const [issue, data] of Object.entries(db.issues)) {
+// ── SUBLOC BAR ────────────────────────────────────────────────────────────────
+function updateSublocBar() {
+  const bar = document.getElementById('sublocBar');
+  if (!SUBLOC_CATS.has(currentFilter)) {
+    bar.classList.remove('visible');
+    currentSubloc = 'all';
+    return;
+  }
+  // Collect available sublocations for current filter
+  const available = new Set();
+  for (const data of Object.values(db.issues)) {
     for (const art of data.articles) {
-      arr.push({ ...art, issue });
+      if (art.category === currentFilter && art.sublocation) {
+        available.add(art.sublocation);
+      }
     }
   }
+  if (available.size === 0) { bar.classList.remove('visible'); return; }
+
+  const order = ['MK','EPCOT','HS','AK','Water Parks','Disney Springs','Resorts'];
+  const sorted = order.filter(s => available.has(s));
+
+  bar.innerHTML = '<span class="subloc-label">Lieu</span>';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'subloc-btn' + (currentSubloc === 'all' ? ' active' : '');
+  allBtn.textContent = 'Tous';
+  allBtn.onclick = () => setSubloc('all');
+  bar.appendChild(allBtn);
+
+  for (const s of sorted) {
+    const btn = document.createElement('button');
+    btn.className = 'subloc-btn' + (currentSubloc === s ? ' active' : '');
+    btn.textContent = SUBLOC_LABELS[s] || s;
+    btn.onclick = () => setSubloc(s);
+    bar.appendChild(btn);
+  }
+  bar.classList.add('visible');
+}
+
+function setSubloc(s) {
+  currentSubloc = s;
+  updateSublocBar();
+  renderArticles();
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function allArticles() {
+  const arr = [];
+  for (const [issue, data] of Object.entries(db.issues))
+    for (const art of data.articles)
+      arr.push({ ...art, issue });
   return arr;
 }
 
-function highlight(text, query) {
-  if (!query) return text;
-  const esc = query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlight(text, q) {
+  if (!q) return text;
+  const esc = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
   return text.replace(new RegExp(`(${esc})`, 'gi'), '<mark>$1</mark>');
+}
+
+function catClass(cat) {
+  return 'cat-' + (cat || 'Général').replace('/Bar','-Bar').replace(' ','-');
 }
 
 function renderArticles() {
@@ -651,42 +366,35 @@ function renderArticles() {
   const q = currentSearch.trim().toLowerCase();
 
   let articles = allArticles();
+  if (currentFilter !== 'all')  articles = articles.filter(a => a.category === currentFilter);
+  if (currentSubloc !== 'all')  articles = articles.filter(a => a.sublocation === currentSubloc);
+  if (q) articles = articles.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.issue.toLowerCase().includes(q) ||
+    (a.category||'').toLowerCase().includes(q) ||
+    (a.sublocation||'').toLowerCase().includes(q)
+  );
 
-  // Filter by category
-  if (currentFilter !== 'all') {
-    articles = articles.filter(a => a.category === currentFilter);
-  }
-
-  // Filter by search
-  if (q) {
-    articles = articles.filter(a =>
-      a.title.toLowerCase().includes(q) ||
-      a.issue.toLowerCase().includes(q) ||
-      (a.category||'').toLowerCase().includes(q)
-    );
-  }
-
-  // Update stats
+  // Stats
   const totalAll = allArticles().length;
-  const issues = Object.keys(db.issues).length;
+  const issues   = Object.keys(db.issues).length;
   document.getElementById('headerStats').innerHTML =
-    `<strong>${totalAll}</strong> articles<br>dans <strong>${issues}</strong> numéro${issues !== 1 ? 's' : ''}`;
-
+    `<strong>${totalAll}</strong> articles<br>dans <strong>${issues}</strong> numéro${issues!==1?'s':''}`;
   document.getElementById('resultsCount').innerHTML =
-    `<strong>${articles.length}</strong> article${articles.length !== 1 ? 's' : ''} trouvé${articles.length !== 1 ? 's' : ''}` +
+    `<strong>${articles.length}</strong> article${articles.length!==1?'s':''} trouvé${articles.length!==1?'s':''}` +
     (q ? ` pour « ${q} »` : '') +
-    (currentFilter !== 'all' ? ` · ${currentFilter}` : '');
+    (currentFilter !== 'all' ? ` · ${currentFilter}` : '') +
+    (currentSubloc !== 'all' ? ` · ${SUBLOC_LABELS[currentSubloc]||currentSubloc}` : '');
 
   if (articles.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">${totalAll === 0 ? '📚' : '🔍'}</div>
-        <div class="empty-title">${totalAll === 0 ? 'Aucun article indexé' : 'Aucun résultat'}</div>
-        <div class="empty-sub">${totalAll === 0
-          ? 'Clique sur « Ajouter un numéro » et uploade une photo de la table des matières pour commencer.'
-          : 'Essaie un autre mot-clé ou change les filtres.'
-        }</div>
-        ${totalAll === 0 ? '<button class="add-btn" onclick="openModal()" style="margin:0 auto">+ Ajouter le premier numéro</button>' : ''}
+        <div class="empty-icon">${totalAll===0?'📚':'🔍'}</div>
+        <div class="empty-title">${totalAll===0?'Aucun article indexé':'Aucun résultat'}</div>
+        <div class="empty-sub">${totalAll===0
+          ? 'Clique sur « Ajouter un numéro » et uploade une photo de la table des matières.'
+          : 'Essaie un autre mot-clé ou change les filtres.'}</div>
+        ${totalAll===0?'<button class="add-btn" onclick="openModal()" style="margin:0 auto">+ Ajouter le premier numéro</button>':''}
       </div>`;
     return;
   }
@@ -697,21 +405,23 @@ function renderArticles() {
     if (!grouped[art.issue]) grouped[art.issue] = [];
     grouped[art.issue].push(art);
   }
-
-  // Sort issues
   const sortedIssues = Object.keys(grouped).sort((a,b) => {
     const da = issueToDate(a), db2 = issueToDate(b);
-    return sort === 'newest' ? db2 - da : da - db2;
+    return sort === 'newest' ? db2-da : da-db2;
   });
 
   container.innerHTML = sortedIssues.map(issue => {
     const arts = grouped[issue];
     const cards = arts.map(art => {
-      const catClass = 'cat-' + (art.category||'Général').replace('/','\\/');
+      const cc = catClass(art.category);
+      const subloc = art.sublocation ? `<span class="card-subloc">${SUBLOC_LABELS[art.sublocation]||art.sublocation}</span>` : '';
       return `
-        <div class="article-card ${catClass}">
+        <div class="article-card ${cc}">
           ${art.page ? `<span class="card-page">p. ${art.page}</span>` : ''}
-          <div class="card-cat">${art.category || 'Général'}</div>
+          <div class="card-badge-row">
+            <span class="card-cat">${art.category||'Général'}</span>
+            ${subloc}
+          </div>
           <div class="card-title">${highlight(art.title, q)}</div>
           <div class="card-meta">${highlight(issue, q)}</div>
         </div>`;
@@ -720,19 +430,19 @@ function renderArticles() {
       <div class="issue-group">
         <div class="issue-header">
           <div class="issue-flag">${issue}</div>
-          <span class="issue-count-badge">${arts.length} article${arts.length !== 1 ? 's' : ''}</span>
+          <span class="issue-count-badge">${arts.length} article${arts.length!==1?'s':''}</span>
         </div>
         <div class="articles-grid">${cards}</div>
       </div>`;
   }).join('');
 }
 
-// ─── FILTER & SEARCH ──────────────────────────────────────────────────────────
+// ── FILTERS ───────────────────────────────────────────────────────────────────
 function setFilter(cat) {
   currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.cat === cat);
-  });
+  currentSubloc = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  updateSublocBar();
   renderArticles();
 }
 
@@ -741,90 +451,69 @@ document.getElementById('searchInput').addEventListener('input', e => {
   renderArticles();
 });
 
-// ─── MODAL ────────────────────────────────────────────────────────────────────
+// ── MODAL ─────────────────────────────────────────────────────────────────────
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.getElementById('jsonInput').value = '';
   document.getElementById('analyzeBtn').disabled = true;
   document.getElementById('statusMsg').textContent = '';
-  document.getElementById('analyzeBtnText').textContent = 'Importer';
 }
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-}
-document.getElementById('modalOverlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeModal();
-});
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target===e.currentTarget) closeModal(); });
 
-// ─── COPY PROMPT ─────────────────────────────────────────────────────────────
 function copyPrompt() {
-  const text = document.getElementById('promptBox').textContent;
-  navigator.clipboard.writeText(text).then(() => showToast('✓ Message copié !', 'success'));
+  navigator.clipboard.writeText(document.getElementById('promptBox').textContent)
+    .then(() => showToast('✓ Message copié !', 'success'));
 }
 
-// ─── JSON VALIDATION ─────────────────────────────────────────────────────────
 function validateJson(textarea) {
   const val = textarea.value.trim();
   const btn = document.getElementById('analyzeBtn');
-  const statusMsg = document.getElementById('statusMsg');
-  if (!val) { btn.disabled = true; statusMsg.textContent = ''; return; }
+  const msg = document.getElementById('statusMsg');
+  if (!val) { btn.disabled = true; msg.textContent = ''; return; }
   try {
-    const parsed = JSON.parse(val.replace(/```json|```/g,'').trim());
-    if (parsed.issue && Array.isArray(parsed.articles) && parsed.articles.length > 0) {
+    const p = JSON.parse(val.replace(/```json|```/g,'').trim());
+    if (p.issue && Array.isArray(p.articles) && p.articles.length > 0) {
       btn.disabled = false;
-      statusMsg.textContent = `✓ JSON valide — ${parsed.articles.length} articles détectés pour ${parsed.issue}`;
+      msg.textContent = `✓ JSON valide — ${p.articles.length} articles pour ${p.issue}`;
       textarea.style.borderColor = '#4CAF50';
-    } else {
-      throw new Error('Structure incorrecte');
-    }
+    } else { throw new Error(); }
   } catch(e) {
     btn.disabled = true;
-    statusMsg.textContent = val.length > 10 ? '⚠ JSON invalide — vérifie la syntaxe' : '';
+    msg.textContent = val.length > 10 ? '⚠ JSON invalide' : '';
     textarea.style.borderColor = val.length > 10 ? '#E53935' : '#D0CBBE';
   }
 }
 
-// ─── IMPORT JSON ─────────────────────────────────────────────────────────────
 function importJson() {
   const raw = document.getElementById('jsonInput').value.trim();
   let parsed;
-  try {
-    parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
-  } catch(e) {
-    document.getElementById('statusMsg').textContent = '⚠ JSON invalide';
-    return;
-  }
+  try { parsed = JSON.parse(raw.replace(/```json|```/g,'').trim()); } catch(e) { return; }
   const { issue, articles } = parsed;
   if (!db.issues[issue]) db.issues[issue] = { articles: [] };
   const existingTitles = new Set(db.issues[issue].articles.map(a => a.title.toLowerCase()));
   let added = 0;
   for (const art of articles) {
     if (!existingTitles.has(art.title.toLowerCase())) {
-      db.issues[issue].articles.push({
-        title: art.title,
-        category: art.category || 'Général',
-        page: art.page || null
-      });
+      db.issues[issue].articles.push({ title: art.title, category: art.category||'Général', page: art.page||null, sublocation: art.sublocation||null });
       existingTitles.add(art.title.toLowerCase());
       added++;
     }
   }
-  save();
-  closeModal();
-  renderArticles();
+  save(); closeModal(); updateSublocBar(); renderArticles();
   showToast(`✓ ${added} articles ajoutés — ${issue}`, 'success');
 }
 
-// ─── TOAST ────────────────────────────────────────────────────────────────────
-function showToast(msg, type = '') {
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(msg, type='') {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show ' + type;
+  t.textContent = msg; t.className = 'toast show ' + type;
   setTimeout(() => t.className = 'toast', 3500);
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────────────────────
 load();
+updateSublocBar();
 renderArticles();
 </script>
 </body>
